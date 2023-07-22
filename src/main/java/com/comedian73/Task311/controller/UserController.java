@@ -51,13 +51,13 @@ public class UserController {
     public String saveEdit (@RequestParam(name = "id") long id,
                             @RequestParam(name = "name") String name,
                             @RequestParam(name = "last_name") String lastName,
-                            @RequestParam(name = "email") String email, Model model) {
+                            @RequestParam(name = "email") String email) {
 
         User user = userRepository.findById(id).orElse(new User());
         user.setFirstName(name);
         user.setLastName(lastName);
         user.setEmail(email);
         userRepository.save(user);
-        return this.user(model);
+        return "delete";
     }
 }
