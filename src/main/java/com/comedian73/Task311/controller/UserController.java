@@ -57,7 +57,6 @@ public class UserController {
         user.setFirstName(name);
         user.setLastName(lastName);
         user.setEmail(email);
-
         userRepository.save(user);
         return this.user(model);
     }
