@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Optional;
-
 @Controller
 public class UserController {
+
     @Autowired
     private UserRepository userRepository;
 
@@ -43,7 +42,7 @@ public class UserController {
     @GetMapping(value = "/edit")
     public String edit (@RequestParam(name = "edit") long id, Model model) {
 
-        Optional<User> user = userRepository.findById(id);
+        User user = userRepository.findById(id).orElse(new User());
         model.addAttribute("user", user);
         return "edit";
     }
