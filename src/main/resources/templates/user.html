@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>User</title>
+    <style>table th, table td {padding: 5px;}</style>
+    <style>
+        <!--
+        .tab { margin-left: 60px; }
+        -->
+    </style>
+
+</head>
+
+<body>
+<div align="center">
+    <h1 class="tab">User list</h1>
+
+
+    <table border="0.1" cellpadding="6">
+        <tr>
+<!--        <th align="center">Id</th>-->
+            <th align="center">Name</th>
+            <th align="center">Last Name</th>
+            <th align="center">Email</th>
+            <th align="center"> </th>
+        </tr>
+
+        <tr th:each="lst : ${list}">
+<!--         <td th:text="${lst.id}">id</td>-->
+            <td align="center" th:text="${lst.firstName}">name</td>
+            <td align="center" th:text="${lst.lastName}">last_name</td>
+            <td align="center" th:text="${lst.email}">email</td>
+            <td align="center">
+                <form action="/delete" method="post">
+                <input type="hidden" name="del" th:value="${lst.id}">
+                <input type="submit" value="Delete">
+                </form>
+            </td>
+            <td align="center">
+                <form action="/edit" method="get" target="_self">
+                    <input type="hidden" name="edit" th:value="${lst.id}">
+                    <input type="submit" value="Edit" >
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <p>
+    <form method="post">
+        <table>
+            If you want to add a user, enter the data and click the button:<br>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name"></td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td><input type="text" name="last_name"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="text" name="email"></td>
+            </tr>
+            <tr>
+                <td colspan="2"> <input type="submit" value="Create NEW User" class="tab"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+
+</html>
