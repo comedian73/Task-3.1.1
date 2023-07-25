@@ -36,7 +36,7 @@ public class UserController {
     public String deleteUser(@RequestParam(name = "del") long id) {
 
         userRepository.deleteById(id);
-        return "delete";
+        return "redirect:/user";
     }
 
     @GetMapping(value = "/edit")
@@ -58,6 +58,6 @@ public class UserController {
         user.setLastName(lastName);
         user.setEmail(email);
         userRepository.save(user);
-        return "delete";
+        return "redirect:/user";
     }
 }

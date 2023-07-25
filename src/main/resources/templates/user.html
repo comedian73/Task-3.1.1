@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -15,33 +15,31 @@
 
 <body>
 <div align="center">
-    <h1 >User list</h1>
+    <h1 >Список пользователей</h1>
 
 
     <table cellpadding="6">
         <tr>
-<!--        <th align="center">Id</th>-->
-            <th align="center">Name</th>
-            <th align="center">Last Name</th>
-            <th align="center">Email</th>
-            <th align="center"> </th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Email</th>
+            <th></th>
         </tr>
 
         <tr th:each="lst : ${list}">
-<!--         <td th:text="${lst.id}">id</td>-->
-            <td align="center" th:text="${lst.firstName}">name</td>
-            <td align="center" th:text="${lst.lastName}">last_name</td>
-            <td align="center" th:text="${lst.email}">email</td>
-            <td align="center">
+            <td th:text="${lst.firstName}">name</td>
+            <td th:text="${lst.lastName}">last_name</td>
+            <td th:text="${lst.email}">email</td>
+            <td>
                 <form action="/delete" method="post">
                 <input type="hidden" name="del" th:value="${lst.id}">
-                <input type="submit" value="Delete">
+                <input type="submit" value="Удалить">
                 </form>
             </td>
-            <td align="center">
+            <td>
                 <form action="/edit" method="get" target="_self">
                     <input type="hidden" name="edit" th:value="${lst.id}">
-                    <input type="submit" value="Edit" >
+                    <input type="submit" value="Изменить" >
                 </form>
             </td>
         </tr>
@@ -50,13 +48,13 @@
     <p>
     <form method="post">
         <table>
-            If you want to add a user, enter the data and click the button:<br>
+            <br>
             <tr>
-                <td>Name:</td>
+                <td>Имя:</td>
                 <td><input type="text" name="name"></td>
             </tr>
             <tr>
-                <td>Last name:</td>
+                <td>Фамилия:</td>
                 <td><input type="text" name="last_name"></td>
             </tr>
             <tr>
@@ -64,7 +62,7 @@
                 <td><input type="text" name="email"></td>
             </tr>
             <tr>
-                <td colspan="2"> <input type="submit" value="Create NEW User" class="tab"></td>
+                <td colspan="2"> <input type="submit" value="Добавить пользователя" class="tab"></td>
             </tr>
         </table>
     </form>
